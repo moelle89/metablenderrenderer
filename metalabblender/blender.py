@@ -8,6 +8,7 @@ class Blender:
 	blenderFilePath = None
 	outputPath = None
 	blenderVersion = None
+	isBlenderUrl = None
 	fileFormat = None
 	renderEngine = None
 	startFrame = None
@@ -17,12 +18,13 @@ class Blender:
 	audio = None
 	logEnable = None
 
-	def __init__(self, blenderFilePath, outputPath, blenderVersion, fileFormat, renderEngine, startFrame, endFrame, 
+	def __init__(self, blenderFilePath, isBlenderUrl, outputPath, blenderVersion, fileFormat, renderEngine, startFrame, endFrame, 
 				renderer, animation, audio, logEnable, token):
 		self.token = token
 		self.blenderFilePath = blenderFilePath
 		self.outputPath = outputPath
 		self.blenderVersion = blenderVersion
+		self.isBlenderUrl = isBlenderUrl
 		self.fileFormat = fileFormat
 		self.renderEngine = renderEngine
 		self.startFrame = startFrame
@@ -47,7 +49,7 @@ class Blender:
 		#Blender.set_renderer(self)	
 		Blender.gpu_setup()
 		ldpreload.preload()
-		setupblender.setup(self.blenderVersion)
+		setupblender.setup(self.blenderVersion, self.isBlenderUrl)
 		#setupblender.enable_rendering(self.gpuEnabled, self.cpuEnabled)
 		print("Setup completed")
 

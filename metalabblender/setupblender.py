@@ -31,8 +31,16 @@ blender_url_dict = {'2.70'    : "https://ftp.nluug.nl/pub/graphics/blender/relea
                     '3.1.1'   : "https://ftp.nluug.nl/pub/graphics/blender/release/Blender3.1/blender-3.1.1-linux-x64.tar.xz",
                     '3.1.2'   : "https://ftp.nluug.nl/pub/graphics/blender/release/Blender3.1/blender-3.1.2-linux-x64.tar.xz"}
 
-def setup(blenderVersion):
-    blender_url = blender_url_dict[blenderVersion]
+def setup(blenderVersionOrUrl , isBlenderUrl):
+    blender_url = None
+    blenderVersion = None
+    if (isBlenderUrl == True):
+        blender_url = blenderVersionOrUrl
+        blenderVersion = blenderVersionOrUrl.rsplit('/',1)[1]
+    else:
+        blender_url = blender_url_dict[blenderVersionOrUrl]
+        blenderVersion = blenderVersionOrUrl
+
     base_url = os.path.basename(blender_url)
 
     try:
