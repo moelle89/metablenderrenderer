@@ -66,7 +66,8 @@ class Blender:
 						audioAvailable,"-E", self.renderEngine,
 						"--log-level","1",
 						"-o", self.outputPath,
-						"-a", self.fileFormat, "--", "--cycles-device", self.renderer
+						"-F", self.fileFormat,
+						"-a", "--", "--cycles-device", self.renderer
 					]
 			else:
 				args = ["!sudo", blender_binary, 
@@ -76,7 +77,8 @@ class Blender:
 						"-o", self.outputPath, 
 						"-s", str(self.startFrame),
 						"-e", str(self.endFrame),
-						"-a", self.fileFormat, "--", "--cycles-device", self.renderer
+						"-F", self.fileFormat,
+						"-a", "--", "--cycles-device", self.renderer
 					]
 		else:
 			args = ["!sudo", blender_binary, 
@@ -84,8 +86,9 @@ class Blender:
 						audioAvailable,"-E", self.renderEngine,
 						"--log-level","1",
 						"-o", self.outputPath,
+						"-F", self.fileFormat,
 						"-f", str(self.startFrame),
-						self.fileFormat, "--", "--cycles-device", self.renderer
+						"--", "--cycles-device", self.renderer
 					]	
 
 		try:
