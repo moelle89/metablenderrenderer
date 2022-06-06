@@ -47,8 +47,9 @@ def setup(blenderVersionOrUrl , isBlenderUrl):
     try:
         subprocess.run(["mkdir", blenderVersion],encoding="utf-8",stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         subprocess.run(["wget", "-nc", blender_url],encoding="utf-8",stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        subprocess.run(["tar", "-xfk", base_url, "-C", './'+blenderVersion, '--strip-components=1'],encoding="utf-8",stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        subprocess.run(["tar", "xf", base_url],encoding="utf-8",stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         print("Blender installed..." + blenderVersion)
+        return base_url
     except subprocess.CalledProcessError as e:
         print("Something went wrong..... Blender library installtion failed.....")
         print(e.output)

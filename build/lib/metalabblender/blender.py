@@ -17,6 +17,7 @@ class Blender:
 	animation = None
 	audio = None
 	logEnable = None
+	blenderInstallPath = None
 
 	def __init__(self, blenderFilePath, isBlenderUrl, outputPath, blenderVersion, fileFormat, renderEngine, startFrame, endFrame, 
 				renderer, animation, audio, logEnable, token):
@@ -49,13 +50,13 @@ class Blender:
 		#Blender.set_renderer(self)	
 		Blender.gpu_setup()
 		ldpreload.preload()
-		setupblender.setup(self.blenderVersion, self.isBlenderUrl)
+		self.blenderInstallPath = setupblender.setup(self.blenderVersion, self.isBlenderUrl)
 		#setupblender.enable_rendering(self.gpuEnabled, self.cpuEnabled)
 		print("Setup completed")
 
 	def render(self):
 		print("starting to process blender...")
-		blender_binary = './'+self.blenderVersion+"/blender"
+		blender_binary = './'+self.blenderInstallPath+"/blender"
 		audioAvailable = ""
 		if (self.audio == False):
 			audioAvailable = "-noaudio"
