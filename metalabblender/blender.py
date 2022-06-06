@@ -61,7 +61,7 @@ class Blender:
 			audioAvailable = "-noaudio"
 		if (self.animation):
 			if self.startFrame == self.endFrame:	
-				args = ["sudo", blender_binary, 
+				args = ["!sudo", blender_binary, 
 						"-b", self.blenderFilePath,
 						audioAvailable,"-E", self.renderEngine,
 						"--log-level","1",
@@ -69,7 +69,7 @@ class Blender:
 						"-a", self.fileFormat, "--", "--cycles-device", self.renderer
 					]
 			else:
-				args = ["sudo", blender_binary, 
+				args = ["!sudo", blender_binary, 
 						"-b", self.blenderFilePath,
 						audioAvailable,"-E", self.renderEngine,
 						"--log-level","1",
@@ -79,7 +79,7 @@ class Blender:
 						"-a", self.fileFormat, "--", "--cycles-device", self.renderer
 					]
 		else:
-			args = ["sudo", blender_binary, 
+			args = ["!sudo", blender_binary, 
 						"-b", self.blenderFilePath,
 						audioAvailable,"-E", self.renderEngine,
 						"--log-level","1",
