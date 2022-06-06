@@ -94,6 +94,9 @@ class Blender:
 		try:
 			print(' '.join(args))
 			process = subprocess.Popen(args, stdout=subprocess.PIPE)
+			while process.poll() is None:
+				l = process.stdout.readline()
+				print(l)
 			print(process.stdout.read())
 			print("Blender Completed...............................................")
 		except subprocess.CalledProcessError as e:
