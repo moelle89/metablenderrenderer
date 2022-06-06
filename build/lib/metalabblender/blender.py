@@ -67,7 +67,7 @@ class Blender:
 						"--log-level","1",
 						"-o", self.outputPath,
 						"-F", self.fileFormat,
-						"-a", "--", "--cycles-device", self.renderer
+						"-a", "--"
 					]
 			else:
 				args = ["sudo", blender_binary, 
@@ -78,7 +78,7 @@ class Blender:
 						"-s", str(self.startFrame),
 						"-e", str(self.endFrame),
 						"-F", self.fileFormat,
-						"-a", "--", "--cycles-device", self.renderer
+						"-a", "--"
 					]
 		else:
 			args = ["sudo", blender_binary, 
@@ -88,7 +88,7 @@ class Blender:
 						"-o", self.outputPath,
 						"-F", self.fileFormat,
 						"-f", str(self.startFrame),
-						"--", "--cycles-device", self.renderer
+						"--"
 					]	
 
 		try:
