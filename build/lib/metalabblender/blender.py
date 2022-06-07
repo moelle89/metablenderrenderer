@@ -59,7 +59,7 @@ class Blender:
 		blender_binary = './'+self.blenderInstallPath+"/blender"
 		if (self.animation):
 			if self.startFrame == self.endFrame:	
-				args = ["sudo", blender_binary, 
+				args = [blender_binary, 
 						"-b", self.blenderFilePath,
 						"-E", self.renderEngine,
 						"--log-level","1",
@@ -68,7 +68,7 @@ class Blender:
 						"-a", "--", "--cycles-device", self.renderer
 					]
 			else:
-				args = ["sudo", blender_binary, 
+				args = [blender_binary, 
 						"-b", self.blenderFilePath,
 						"-E", self.renderEngine,
 						"--log-level","1",
@@ -79,7 +79,7 @@ class Blender:
 						"-a", "--", "--cycles-device", self.renderer
 					]
 		else:
-			args = ["sudo", blender_binary, 
+			args = [blender_binary, 
 						"-b", self.blenderFilePath,
 						"-E", self.renderEngine,
 						"--log-level","1",
