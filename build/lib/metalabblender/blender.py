@@ -46,7 +46,7 @@ class Blender:
 			self.renderer = "OPTIX"
 
 	def setup(self):
-		#tokenhandler.TokenHandler.decode_token(self.token)
+		#tokenhandler.TokenHandler.validate(self.token)
 		#Blender.set_renderer(self)	
 		Blender.gpu_setup()
 		ldpreload.preload()
@@ -65,7 +65,7 @@ class Blender:
 						"--log-level","1",
 						"-o", self.outputPath,
 						"-F", self.fileFormat,
-						"-a", "--"
+						"-a", "--", "--cycles-device", self.renderer
 					]
 			else:
 				args = ["sudo", blender_binary, 
@@ -76,7 +76,7 @@ class Blender:
 						"-s", str(self.startFrame),
 						"-e", str(self.endFrame),
 						"-F", self.fileFormat,
-						"-a", "--"
+						"-a", "--", "--cycles-device", self.renderer
 					]
 		else:
 			args = ["sudo", blender_binary, 
@@ -86,7 +86,7 @@ class Blender:
 						"-o", self.outputPath,
 						"-F", self.fileFormat,
 						"-f", str(self.startFrame),
-						"--"
+						"--", "--cycles-device", self.renderer
 					]
 
 		if (self.audio == False):
