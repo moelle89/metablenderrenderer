@@ -57,14 +57,11 @@ class Blender:
 	def render(self):
 		print("starting to process blender...")
 		blender_binary = './'+self.blenderInstallPath+"/blender"
-		audioAvailable = ""
-		if (self.audio == False):
-			audioAvailable = "-noaudio"
 		if (self.animation):
 			if self.startFrame == self.endFrame:	
 				args = ["sudo", blender_binary, 
 						"-b", self.blenderFilePath,
-						audioAvailable,"-E", self.renderEngine,
+						"-E", self.renderEngine,
 						"--log-level","1",
 						"-o", self.outputPath,
 						"-F", self.fileFormat,
@@ -73,7 +70,7 @@ class Blender:
 			else:
 				args = ["sudo", blender_binary, 
 						"-b", self.blenderFilePath,
-						audioAvailable,"-E", self.renderEngine,
+						"-E", self.renderEngine,
 						"--log-level","1",
 						"-o", self.outputPath, 
 						"-s", str(self.startFrame),
@@ -84,13 +81,16 @@ class Blender:
 		else:
 			args = ["sudo", blender_binary, 
 						"-b", self.blenderFilePath,
-						audioAvailable,"-E", self.renderEngine,
+						"-E", self.renderEngine,
 						"--log-level","1",
 						"-o", self.outputPath,
 						"-F", self.fileFormat,
 						"-f", str(self.startFrame),
 						"--"
-					]	
+					]
+
+		if (self.audio == False):
+			args.insert(4, "-noaudio")		
 
 		try:
 			print(' '.join(args))
