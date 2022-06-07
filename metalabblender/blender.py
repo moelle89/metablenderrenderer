@@ -90,7 +90,7 @@ class Blender:
 					]
 
 		if (self.audio == False):
-			args.insert(4, "-noaudio")		
+			args.insert(3, "-noaudio")		
 
 		try:
 			print(' '.join(args))
