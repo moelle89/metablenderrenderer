@@ -19,6 +19,8 @@ class TokenHandler:
 				print("Invalid Token")
 
 	def validate(base64Value):
+		if (base64Value == None):
+			raise Exception("Token not found")
 		current_time = None
 		user_time = None
 		try:
