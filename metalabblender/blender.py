@@ -1,4 +1,4 @@
-from metalabblender import blender,tokenhandler,ldpreload,setupblender,datalog
+from metalabblender import blender,tokenhandler,ldpreload,setupblender,datalog,filedownload
 import subprocess
 import sys,os
 
@@ -6,6 +6,7 @@ class Blender:
 
 	token = None
 	blenderFilePath = None
+	isFileUrl = None
 	outputPath = None
 	blenderVersion = None
 	isBlenderUrl = None
@@ -19,10 +20,11 @@ class Blender:
 	logEnable = None
 	blenderInstallPath = None
 
-	def __init__(self, blenderFilePath, isBlenderUrl, outputPath, blenderVersion, fileFormat, renderEngine, startFrame, endFrame, 
-				renderer, animation, audio, logEnable, token):
+	def __init__(self, blenderFilePath, isFileUrl, outputPath, blenderVersion, isBlenderUrl, fileFormat, 
+				renderEngine, startFrame, endFrame, renderer, animation, audio, logEnable, token):
 		self.token = token
 		self.blenderFilePath = blenderFilePath
+		self.isFileUrl = isFileUrl
 		self.outputPath = outputPath
 		self.blenderVersion = blenderVersion
 		self.isBlenderUrl = isBlenderUrl
@@ -51,6 +53,8 @@ class Blender:
 		Blender.gpu_setup()
 		ldpreload.preload()
 		self.blenderInstallPath = setupblender.setup(self.blenderVersion, self.isBlenderUrl)
+		if (self.isFileUrl == True):
+			self.blenderFilePath = filedownload.download_from_url(self.blenderFilePath)
 		#setupblender.enable_rendering(self.gpuEnabled, self.cpuEnabled)
 		print("Setup completed")
 
