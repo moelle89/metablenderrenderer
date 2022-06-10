@@ -66,7 +66,6 @@ class Blender:
 				args = [blender_binary, 
 						"-b", self.blenderFilePath,
 						"-E", self.renderEngine,
-						"--log-level","1",
 						"-o", self.outputPath,
 						"-F", self.fileFormat,
 						"-a", "--", "--cycles-device", self.renderer
@@ -75,7 +74,6 @@ class Blender:
 				args = [blender_binary, 
 						"-b", self.blenderFilePath,
 						"-E", self.renderEngine,
-						"--log-level","1",
 						"-o", self.outputPath, 
 						"-s", str(self.startFrame),
 						"-e", str(self.endFrame),
@@ -86,7 +84,6 @@ class Blender:
 			args = [blender_binary, 
 						"-b", self.blenderFilePath,
 						"-E", self.renderEngine,
-						"--log-level","1",
 						"-o", self.outputPath,
 						"-F", self.fileFormat,
 						"-f", str(self.startFrame),
