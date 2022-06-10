@@ -32,4 +32,4 @@ class TokenHandler:
 		except:
 			raise Exception("Error.Can't extract data from token")
 		if (current_time > user_time):
-			raise Exception("Token expired. please regenerate script using site")	
+			raise Exception("Token expired. please regenerate script from https://blendertool.com")	

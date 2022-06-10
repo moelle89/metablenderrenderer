@@ -94,14 +94,23 @@ class Blender:
 					]
 
 		if (self.audio == False):
-			args.insert(3, "-noaudio")		
+			args.insert(3, "-noaudio")
+			if(self.logEnable == True):
+				args.insert(6, "--log-level")
+				args.insert(7, "1")
+		else:
+			if(self.logEnable == True):
+				args.insert(5, "--log-level")
+				args.insert(6, "1")
+
 
 		try:
 			print(' '.join(args))
 			process = subprocess.Popen(args, stdout=subprocess.PIPE)
 			while process.poll() is None:
 				l = process.stdout.readline()
-				print(l)
+				if(self.logEnable == True):
+					print(l)
 			print(process.stdout.read())
 			print("Blender Completed...............................................")
 		except subprocess.CalledProcessError as e:

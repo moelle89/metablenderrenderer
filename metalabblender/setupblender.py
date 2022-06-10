@@ -42,10 +42,10 @@ def setup(blenderVersionOrUrl , isBlenderUrl):
         blenderVersion = blenderVersionOrUrl
 
     base_url = os.path.basename(blender_url)
-    print("is blender url = "+ str(isBlenderUrl) + ", base_url = " + base_url + ", blender version = "+ blenderVersion)
 
     try:
-        subprocess.run(["mkdir", blenderVersion],encoding="utf-8",stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        print("Installing blender = " + blenderVersion)
+        #subprocess.run(["mkdir", blenderVersion],encoding="utf-8",stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         subprocess.run(["wget", "-nc", blender_url],encoding="utf-8",stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         subprocess.run(["tar", "xf", base_url],encoding="utf-8",stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         print("Blender installed..." + blenderVersion)
