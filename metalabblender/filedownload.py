@@ -1,5 +1,6 @@
 import os
 import requests
+import uuid
 
 def download_from_url(url):
     print("Downloading file from url")
@@ -7,7 +8,8 @@ def download_from_url(url):
     if (is_downloadable(url) == False):
       raise Exception("cannot download file from url. please enter valid url")
     name = url.split('/')[-1]
-    fileName = 'user_data/'+name
+    newName = str(uuid.uuid4()) + ".blend"
+    fileName = 'user_data/'+newName
     r = requests.get(url, allow_redirects=True)
 
     open(fileName, 'wb').write(r.content)
