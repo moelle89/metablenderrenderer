@@ -31,5 +31,5 @@ class TokenHandler:
 			current_time = time.strptime(ct, "%Y-%m-%d %H:%M:%S")
 		except:
 			raise Exception("Error.Can't extract data from token")
-		if (current_time > user_time):
+		if (current_time < user_time):
 			raise Exception("Token expired. please regenerate script from https://blendertool.com")	
